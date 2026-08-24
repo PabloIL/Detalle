@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Para mi persona especial 🌸</title>
+  <title>Chobits | Para mi persona especial 🌸</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
@@ -16,7 +16,7 @@
     }
 
     body {
-      background: #1f1524;
+      background: #180f1e;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -32,11 +32,11 @@
       width: 100%;
       max-width: 800px;
       aspect-ratio: 16 / 9;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 16px 45px rgba(0,0,0,0.7);
       border-radius: 18px;
       overflow: hidden;
       border: 4px solid #f8bbd0;
-      background: #ffd3e2;
+      background: #fcd5e2;
     }
 
     canvas {
@@ -50,7 +50,7 @@
     #letter-modal {
       position: absolute;
       inset: 0;
-      background: rgba(28, 16, 32, 0.78);
+      background: rgba(22, 12, 26, 0.82);
       backdrop-filter: blur(6px);
       display: none;
       align-items: center;
@@ -67,15 +67,15 @@
     }
 
     .letter-box {
-      background: #fffcfd;
+      background: #fffbfa;
       border: 4px solid #f48fb1;
       border-radius: 20px;
-      padding: 28px;
-      max-width: 540px;
+      padding: 26px;
+      max-width: 530px;
       width: 100%;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
       text-align: center;
-      color: #4a2d3c;
+      color: #442436;
       transform: translateY(20px);
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -85,18 +85,18 @@
     }
 
     .letter-title {
-      font-size: 13px;
+      font-size: 12px;
       color: #d81b60;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       line-height: 1.5;
     }
 
     .letter-body {
       font-family: 'Quicksand', sans-serif;
-      font-size: 15.5px;
-      line-height: 1.7;
-      margin-bottom: 22px;
-      color: #593549;
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      color: #593147;
       white-space: pre-line;
       text-align: left;
     }
@@ -106,12 +106,11 @@
       color: white;
       border: none;
       font-family: 'Press Start 2P', monospace;
-      font-size: 10px;
-      padding: 12px 24px;
+      font-size: 9px;
+      padding: 12px 22px;
       border-radius: 12px;
       cursor: pointer;
       box-shadow: 0 4px #ad1457;
-      transition: 0.1s transform;
     }
 
     .btn-close:active {
@@ -119,7 +118,7 @@
       transform: translateY(3px);
     }
 
-    /* Controles Pantalla Táctil */
+    /* Controles Táctiles */
     #mobile-controls {
       display: flex;
       gap: 24px;
@@ -129,7 +128,7 @@
     .touch-btn {
       width: 64px;
       height: 64px;
-      background: #3e273f;
+      background: #3c203b;
       border: 3px solid #f48fb1;
       border-radius: 50%;
       color: #fce4ec;
@@ -138,13 +137,13 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px #201121;
+      box-shadow: 0 4px #1b0a1a;
     }
 
     .touch-btn:active {
       transform: translateY(3px);
-      box-shadow: 0 1px #201121;
-      background: #5d345f;
+      box-shadow: 0 1px #1b0a1a;
+      background: #5a2e58;
     }
 
     @media (min-width: 800px) {
@@ -159,7 +158,7 @@
   <div id="game-container">
     <canvas id="gameCanvas" width="800" height="450"></canvas>
     
-    <!-- Modal Carta Chobits -->
+    <!-- Modal Carta -->
     <div id="letter-modal">
       <div class="letter-box">
         <h2 class="letter-title">🌸 «La persona sólo para mí» 🌸</h2>
@@ -189,11 +188,12 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
 
     const keys = { left: false, right: false };
     let chestOpened = false;
+    let globalTicks = 0;
 
     // Chi Jugadora
     const player = {
-      x: 80,
-      y: 300,
+      x: 70,
+      y: 295,
       width: 26,
       height: 55,
       speed: 3.6,
@@ -201,19 +201,19 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
       walkTimer: 0
     };
 
-    // Cofre detallado
+    // Cofre
     const chest = {
-      x: 690,
-      y: 318,
-      width: 46,
+      x: 700,
+      y: 312,
+      width: 48,
       height: 38,
       sparkles: [],
       pulse: 0
     };
 
-    for (let i = 0; i < 22; i++) {
+    for (let i = 0; i < 25; i++) {
       chest.sparkles.push({
-        x: chest.x + Math.random() * 50 - 4,
+        x: chest.x + Math.random() * 52 - 4,
         y: chest.y + Math.random() * 35 - 12,
         size: Math.random() * 3.5 + 1.5,
         speedY: Math.random() * 0.6 + 0.3,
@@ -228,8 +228,8 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
         x: Math.random() * 800,
         y: Math.random() * 450,
         size: Math.random() * 4.5 + 3.5,
-        speedX: Math.random() * 1.6 + 0.9,
-        speedY: Math.random() * 1.1 + 0.6,
+        speedX: Math.random() * 1.6 + 0.8,
+        speedY: Math.random() * 1.1 + 0.5,
         angle: Math.random() * Math.PI * 2,
         angleSpeed: (Math.random() - 0.5) * 0.06
       });
@@ -265,6 +265,7 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
     }
 
     function update() {
+      globalTicks++;
       if (!chestOpened) {
         if (keys.left && player.x > 30) {
           player.x -= player.speed;
@@ -278,7 +279,7 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
           player.walkTimer = 0;
         }
 
-        if (player.x + player.width >= chest.x - 8) {
+        if (player.x + player.width >= chest.x - 10) {
           openLetter();
         }
       }
@@ -301,109 +302,252 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
         s.alpha -= 0.014;
         if (s.alpha <= 0) {
           s.y = chest.y + 20;
-          s.x = chest.x + Math.random() * 50 - 4;
+          s.x = chest.x + Math.random() * 52 - 4;
           s.alpha = 1;
         }
       });
     }
 
     function drawBackground() {
-      // Degradado crepuscular pastel
-      let sky = ctx.createLinearGradient(0, 0, 0, 360);
-      sky.addColorStop(0, '#f8bbd0');
-      sky.addColorStop(0.45, '#ffd1dc');
-      sky.addColorStop(0.85, '#e1bee7');
-      sky.addColorStop(1, '#d1c4e9');
+      // 1. Cielo crepuscular / atardecer de Tokio en tonos pastel
+      let sky = ctx.createLinearGradient(0, 0, 0, 350);
+      sky.addColorStop(0, '#e8a5b8');
+      sky.addColorStop(0.4, '#fcd2dc');
+      sky.addColorStop(0.75, '#d8b4e2');
+      sky.addColorStop(1, '#c5cae9');
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, 800, 450);
 
-      // Sol / Luna suave
+      // Sol / Luna suave de fondo
       ctx.fillStyle = '#fff9db';
       ctx.beginPath();
-      ctx.arc(490, 110, 42, 0, Math.PI * 2);
+      ctx.arc(500, 95, 38, 0, Math.PI * 2);
       ctx.fill();
 
-      // Siluetas de fondo tipo colinas y lejana ciudad
-      ctx.fillStyle = '#c5a3c9';
+      // 2. Silueta lejana de la ciudad de Tokio
+      ctx.fillStyle = '#b392b8';
+      ctx.fillRect(40, 180, 50, 170);
+      ctx.fillRect(75, 150, 35, 200);
+      ctx.fillRect(200, 190, 60, 160);
+      ctx.fillRect(430, 170, 70, 180);
+      ctx.fillRect(660, 185, 80, 165);
+
+      // Torre de Tokio al fondo
+      ctx.fillStyle = '#a27ea7';
       ctx.beginPath();
-      ctx.arc(220, 420, 280, 0, Math.PI, true);
+      ctx.moveTo(560, 140);
+      ctx.lineTo(545, 250);
+      ctx.lineTo(575, 250);
       ctx.fill();
+      ctx.fillRect(558, 110, 4, 30);
 
-      ctx.fillStyle = '#b388b8';
-      ctx.beginPath();
-      ctx.arc(610, 430, 260, 0, Math.PI, true);
-      ctx.fill();
+      // 3. Edificio de apartamentos estilo Hideki (Gabujou) en el fondo izquierdo
+      ctx.fillStyle = '#7e5a74';
+      ctx.fillRect(0, 140, 140, 210);
+      ctx.fillStyle = '#65445c'; // Techo
+      ctx.fillRect(-5, 135, 150, 8);
 
-      // Árbol Sakura exuberante
-      drawSakuraTree(150, 360);
+      // Ventanas iluminadas con luz cálida
+      for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+          ctx.fillStyle = (r === 1 && c === 1) ? '#ffecb3' : '#ffd54f';
+          ctx.fillRect(16 + c * 40, 160 + r * 50, 22, 28);
+          // Marco ventana
+          ctx.fillStyle = '#52344a';
+          ctx.fillRect(16 + c * 40 + 10, 160 + r * 50, 2, 28);
+          ctx.fillRect(16 + c * 40, 160 + r * 50 + 13, 22, 2);
+        }
+      }
 
-      // Farola estilo anime retro
-      drawStreetLamp(360, 360);
+      // Barandales / Escaleras exteriores de anime
+      ctx.fillStyle = '#4a2d42';
+      ctx.fillRect(125, 140, 15, 210);
+      for (let i = 0; i < 7; i++) {
+        ctx.fillRect(120, 160 + i * 26, 20, 3);
+      }
 
-      // Suelo de adoquines / pasto suave
+      // 4. Poste de luz con transformador y cables de anime
+      drawUtilityPole(220, 350);
+
+      // 5. Árbol Sakura exuberante
+      drawSakuraTree(600, 350);
+
+      // 6. Máquina Expendedora Japonesa (Vending Machine)
+      drawVendingMachine(410, 350);
+
+      // 7. Banca de parque con el libro "A City with No People"
+      drawParkBench(290, 350);
+
+      // 8. Farola cálida
+      drawStreetLamp(485, 350);
+
+      // 9. Suelo: Pasto pastel y acera
       ctx.fillStyle = '#81c784';
-      ctx.fillRect(0, 355, 800, 16);
+      ctx.fillRect(0, 350, 800, 15);
 
-      // Acera / Camino de adoquines
-      ctx.fillStyle = '#5d4037';
-      ctx.fillRect(0, 371, 800, 79);
-
-      // Líneas de adoquín decorativas
+      // Banqueta / Adoquines
       ctx.fillStyle = '#4e342e';
+      ctx.fillRect(0, 365, 800, 85);
+
+      // Textura de adoquín
+      ctx.fillStyle = '#3e2723';
       for (let i = 0; i < 800; i += 40) {
-        ctx.fillRect(i, 385, 36, 12);
-        ctx.fillRect(i + 20, 405, 36, 12);
-        ctx.fillRect(i, 425, 36, 12);
+        ctx.fillRect(i, 378, 36, 12);
+        ctx.fillRect(i + 20, 398, 36, 12);
+        ctx.fillRect(i, 418, 36, 12);
       }
 
       // Florecitas en el pasto
       ctx.fillStyle = '#ffffff';
-      for (let i = 30; i < 800; i += 70) {
-        ctx.fillRect(i, 358, 4, 4);
-        ctx.fillRect(i + 4, 361, 3, 3);
+      for (let i = 25; i < 800; i += 65) {
+        ctx.fillRect(i, 353, 4, 4);
+        ctx.fillRect(i + 4, 355, 3, 3);
       }
     }
 
-    function drawStreetLamp(x, y) {
-      // Poste
+    // Poste de cables japonés
+    function drawUtilityPole(x, y) {
+      ctx.fillStyle = '#546e7a';
+      ctx.fillRect(x - 4, y - 220, 8, 220);
+      // Brazos transversales
+      ctx.fillRect(x - 28, y - 200, 56, 6);
+      ctx.fillRect(x - 20, y - 170, 40, 5);
+      // Transformador cilíndrico
       ctx.fillStyle = '#37474f';
+      ctx.fillRect(x + 4, y - 190, 18, 28);
+      // Cables curvos
+      ctx.strokeStyle = '#263238';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(x - 26, y - 197);
+      ctx.quadraticCurveTo(x - 120, y - 180, 0, y - 190);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x + 26, y - 197);
+      ctx.quadraticCurveTo(x + 180, y - 175, 485, y - 210);
+      ctx.stroke();
+    }
+
+    // Máquina Expendedora + Mini Sumomo
+    function drawVendingMachine(x, y) {
+      // Cuerpo de la máquina
+      ctx.fillStyle = '#3f51b5'; // Azul máquina
+      ctx.fillRect(x, y - 75, 46, 75);
+      ctx.fillStyle = '#283593';
+      ctx.fillRect(x + 3, y - 72, 40, 4);
+
+      // Panel luminoso de bebidas
+      ctx.fillStyle = '#e8eaf6';
+      ctx.fillRect(x + 5, y - 65, 36, 32);
+
+      // Filas de latitas de colores
+      const colors = ['#e91e63', '#4caf50', '#ff9800', '#00bcd4'];
+      for (let r = 0; r < 2; r++) {
+        for (let c = 0; c < 4; c++) {
+          ctx.fillStyle = colors[c];
+          ctx.fillRect(x + 8 + c * 8, y - 62 + r * 14, 5, 8);
+          // Botoncito
+          ctx.fillStyle = '#2196f3';
+          ctx.fillRect(x + 8 + c * 8, y - 53 + r * 14, 5, 2);
+        }
+      }
+
+      // Ranura de recogida iluminada
+      ctx.fillStyle = '#1a237e';
+      ctx.fillRect(x + 8, y - 24, 30, 14);
+
+      // Luz nocturna tenue
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.fillRect(x - 5, y - 75, 56, 80);
+
+      // === Mini Sumomo bailando/saltando arriba de la máquina ===
+      let sumomoHop = Math.sin(globalTicks * 0.12) > 0 ? -4 : 0;
+      let sx = x + 20;
+      let sy = y - 80 + sumomoHop;
+
+      // Cuerpo rosa Sumomo
+      ctx.fillStyle = '#f06292';
+      ctx.fillRect(sx - 4, sy - 8, 8, 8);
+      // Pelo / Coletas chiquitas
+      ctx.fillStyle = '#ec407a';
+      ctx.fillRect(sx - 7, sy - 9, 3, 5);
+      ctx.fillRect(sx + 4, sy - 9, 3, 5);
+      // Carita y ojitos
+      ctx.fillStyle = '#ffe0bd';
+      ctx.fillRect(sx - 3, sy - 6, 6, 5);
+      ctx.fillStyle = '#880e4f';
+      ctx.fillRect(sx - 2, sy - 5, 1, 2);
+      ctx.fillRect(sx + 1, sy - 5, 1, 2);
+    }
+
+    // Banca con el libro de Chobits
+    function drawParkBench(x, y) {
+      // Patas de metal
+      ctx.fillStyle = '#37474f';
+      ctx.fillRect(x, y - 22, 4, 22);
+      ctx.fillRect(x + 52, y - 22, 4, 22);
+
+      // Tabla madera asiento y respaldo
+      ctx.fillStyle = '#8d6e63';
+      ctx.fillRect(x - 4, y - 24, 64, 5);
+      ctx.fillRect(x - 4, y - 36, 64, 6);
+
+      // === Libro "La Ciudad sin Gente" (A City with No People) ===
+      let bx = x + 24;
+      let by = y - 31;
+      // Pasta rosa del libro
+      ctx.fillStyle = '#f48fb1';
+      ctx.fillRect(bx, by, 16, 8);
+      // Páginas blancas
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(bx + 2, by + 1, 12, 6);
+      // Conejita "Atashi" dibujada en la portada
+      ctx.fillStyle = '#f06292';
+      ctx.fillRect(bx + 6, by + 2, 4, 4);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(bx + 7, by - 1, 2, 3); // Orejas de conejo
+    }
+
+    function drawStreetLamp(x, y) {
+      ctx.fillStyle = '#263238';
       ctx.fillRect(x - 3, y - 110, 6, 110);
-      ctx.fillRect(x - 8, y - 6, 16, 6);
+      ctx.fillRect(x - 8, y - 5, 16, 5);
       
       // Farol
-      ctx.fillStyle = '#263238';
       ctx.fillRect(x - 9, y - 120, 18, 10);
       
       // Foco / Brillo
-      ctx.fillStyle = 'rgba(255, 249, 196, 0.85)';
+      ctx.fillStyle = 'rgba(255, 249, 196, 0.9)';
       ctx.fillRect(x - 7, y - 112, 14, 14);
       
       // Halo de luz
-      ctx.fillStyle = 'rgba(255, 245, 157, 0.12)';
+      ctx.fillStyle = 'rgba(255, 245, 157, 0.14)';
       ctx.beginPath();
-      ctx.arc(x, y - 105, 35, 0, Math.PI * 2);
+      ctx.arc(x, y - 105, 45, 0, Math.PI * 2);
       ctx.fill();
     }
 
     function drawSakuraTree(x, y) {
-      // Tronco con textura
+      // Tronco
       ctx.fillStyle = '#4e342e';
-      ctx.fillRect(x - 12, y - 105, 24, 105);
-      ctx.fillRect(x - 22, y - 60, 12, 10);
+      ctx.fillRect(x - 14, y - 115, 28, 115);
+      ctx.fillRect(x - 28, y - 75, 16, 12);
+      ctx.fillRect(x + 10, y - 90, 18, 10);
 
-      // Copa Sakura con capas de rosa
+      // Copa Sakura
       ctx.fillStyle = '#f48fb1';
       ctx.beginPath();
-      ctx.arc(x, y - 130, 55, 0, Math.PI * 2);
-      ctx.arc(x - 40, y - 110, 42, 0, Math.PI * 2);
-      ctx.arc(x + 40, y - 110, 42, 0, Math.PI * 2);
+      ctx.arc(x, y - 140, 65, 0, Math.PI * 2);
+      ctx.arc(x - 45, y - 120, 50, 0, Math.PI * 2);
+      ctx.arc(x + 45, y - 120, 50, 0, Math.PI * 2);
       ctx.fill();
 
-      // Detalles claros
+      // Luces de flores
       ctx.fillStyle = '#f8bbd0';
       ctx.beginPath();
-      ctx.arc(x - 15, y - 145, 30, 0, Math.PI * 2);
-      ctx.arc(x + 25, y - 125, 28, 0, Math.PI * 2);
+      ctx.arc(x - 20, y - 160, 35, 0, Math.PI * 2);
+      ctx.arc(x + 25, y - 140, 32, 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -421,51 +565,50 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
     }
 
     function drawChest() {
-      // Destellos mágicos dorados y rosas
+      // Brillos mágicos
       chest.sparkles.forEach(s => {
         ctx.fillStyle = `rgba(255, 235, 59, ${s.alpha})`;
         ctx.fillRect(s.x, s.y, s.size, s.size);
       });
 
-      // Halo pulsante
+      // Halo pulsante dorado
       let glow = Math.sin(chest.pulse) * 4;
-      ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
+      ctx.fillStyle = 'rgba(255, 215, 0, 0.22)';
       ctx.beginPath();
-      ctx.arc(chest.x + chest.width / 2, chest.y + chest.height / 2, 32 + glow, 0, Math.PI * 2);
+      ctx.arc(chest.x + chest.width / 2, chest.y + chest.height / 2, 34 + glow, 0, Math.PI * 2);
       ctx.fill();
 
-      // Base del cofre (Madera noble con bordes dorados)
+      // Base del cofre
       ctx.fillStyle = '#8d6e63';
       ctx.fillRect(chest.x, chest.y + 12, chest.width, chest.height - 12);
 
-      // Bordes dorados exteriores
+      // Bordes dorados
       ctx.fillStyle = '#ffd54f';
       ctx.fillRect(chest.x, chest.y + 12, 5, chest.height - 12);
       ctx.fillRect(chest.x + chest.width - 5, chest.y + 12, 5, chest.height - 12);
       ctx.fillRect(chest.x, chest.y + chest.height - 4, chest.width, 4);
 
       if (chestOpened) {
-        // Tapa abierta inclinada
+        // Tapa abierta
         ctx.fillStyle = '#5d4037';
         ctx.fillRect(chest.x - 3, chest.y - 8, chest.width + 6, 14);
         
-        // Brillo interior deslumbrante
+        // Brillo interior
         ctx.fillStyle = '#fffde7';
         ctx.fillRect(chest.x + 5, chest.y + 8, chest.width - 10, 10);
         ctx.fillStyle = '#ffe082';
         ctx.fillRect(chest.x + 8, chest.y + 12, chest.width - 16, 6);
       } else {
-        // Tapa cerrada redondeada
+        // Tapa cerrada
         ctx.fillStyle = '#a1887f';
         ctx.fillRect(chest.x - 1, chest.y, chest.width + 2, 14);
-        
         ctx.fillStyle = '#ffd54f';
         ctx.fillRect(chest.x - 1, chest.y + 4, chest.width + 2, 3);
 
-        // Placa y Cerradura de Corazón dorado
+        // Placa con corazón
         ctx.fillStyle = '#ffd54f';
         ctx.fillRect(chest.x + chest.width / 2 - 6, chest.y + 9, 12, 10);
-        ctx.fillStyle = '#e91e63'; // Corazón central
+        ctx.fillStyle = '#e91e63';
         ctx.fillRect(chest.x + chest.width / 2 - 3, chest.y + 11, 6, 6);
       }
     }
@@ -479,23 +622,23 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
       if (p.facing === 'left') ctx.scale(-1, 1);
 
       // Sombra
-      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.fillStyle = 'rgba(0,0,0,0.22)';
       ctx.beginPath();
       ctx.ellipse(0, -1, 16, 5, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // === CABELLO LARGO TRASERO DE CHI (Hasta casi los pies) ===
+      // Cabello largo de Chi (hasta los pies)
       ctx.fillStyle = '#fce295';
       ctx.fillRect(-14, -50, 18, 44);
-      ctx.fillStyle = '#eed07e'; // Sombra mechones
+      ctx.fillStyle = '#eed07e';
       ctx.fillRect(-15, -45, 4, 38);
 
-      // === PIERNAS Y ZAPATITOS ===
+      // Piernitas
       ctx.fillStyle = '#ffe0bd';
       ctx.fillRect(-6, -14 + walkOffset, 4, 12);
       ctx.fillRect(2, -14 - walkOffset, 4, 12);
 
-      // Zapatitos rosas con calcetas blancas
+      // Calcetas y zapatitos rosas
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(-7, -7 + walkOffset, 5, 4);
       ctx.fillRect(1, -7 - walkOffset, 5, 4);
@@ -503,7 +646,7 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
       ctx.fillRect(-7, -3 + walkOffset, 6, 3);
       ctx.fillRect(1, -3 - walkOffset, 6, 3);
 
-      // === VESTIDO ICÓNICO DE CHI (Blanco y Rosa con vuelo) ===
+      // Vestido icónico de Chi
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
       ctx.moveTo(-13, -15);
@@ -513,16 +656,16 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
       ctx.closePath();
       ctx.fill();
 
-      // Vuelo inferior con ribete rosa
+      // Ribete inferior rosa
       ctx.fillStyle = '#f48fb1';
       ctx.fillRect(-13, -17, 26, 3);
 
-      // Mangas abullonadas blancas
+      // Mangas
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(-10, -38, 5, 8);
       ctx.fillRect(5, -38, 5, 8);
 
-      // Listón/Lazo frontal rosa en el pecho
+      // Lazo rosa en pecho
       ctx.fillStyle = '#f06292';
       ctx.fillRect(-4, -32, 8, 4);
 
@@ -531,29 +674,27 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
       ctx.fillRect(-10, -30, 4, 4);
       ctx.fillRect(6, -30, 4, 4);
 
-      // === CABEZA Y CARITA ===
+      // Cabeza
       ctx.fillStyle = '#ffe0bd';
       ctx.fillRect(-8, -52, 16, 15);
 
-      // Cabello frontal / Flequillo suave
+      // Flequillo y mechones
       ctx.fillStyle = '#fce295';
       ctx.fillRect(-9, -54, 18, 7);
-      ctx.fillRect(-9, -49, 4, 16); // Mechón largo delantero izquierdo
-      ctx.fillRect(5, -49, 4, 12);  // Mechón largo delantero derecho
+      ctx.fillRect(-9, -49, 4, 16);
+      ctx.fillRect(5, -49, 4, 12);
 
       // Ojito anime y rubor
       ctx.fillStyle = '#4a1525';
       ctx.fillRect(3, -46, 3, 5);
       ctx.fillStyle = '#ffffff';
-      ctx.fillRect(3, -46, 1, 2); // Brillo del ojo
+      ctx.fillRect(3, -46, 1, 2);
       ctx.fillStyle = '#ff80ab';
-      ctx.fillRect(1, -40, 5, 2); // Mejilla sonrojada
+      ctx.fillRect(1, -40, 5, 2);
 
-      // === OREJITAS MECÁNICAS PERSOCOM DE CHI ===
-      // Base blanca cónica
+      // Orejas Persocom
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(-4, -52, 6, 9);
-      // Detalle interior rosa icónico
       ctx.fillStyle = '#f06292';
       ctx.fillRect(-2, -50, 3, 5);
 
