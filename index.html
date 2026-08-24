@@ -46,6 +46,53 @@
       image-rendering: pixelated;
     }
 
+    /* Pantalla de Inicio / Click para Reproducir */
+    #start-screen {
+      position: absolute;
+      inset: 0;
+      background: rgba(24, 15, 30, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      cursor: pointer;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 0.5s ease;
+    }
+
+    #start-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .start-title {
+      font-size: 16px;
+      color: #ff80ab;
+      margin-bottom: 24px;
+      line-height: 1.6;
+      text-shadow: 0 0 10px rgba(255, 128, 171, 0.5);
+    }
+
+    .start-btn {
+      background: #ec407a;
+      color: white;
+      border: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      box-shadow: 0 5px #ad1457;
+      animation: pulseBtn 1.5s infinite;
+    }
+
+    @keyframes pulseBtn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
     /* Botón flotante de Música */
     #music-toggle {
       position: absolute;
@@ -83,7 +130,7 @@
       padding: 20px;
       opacity: 0;
       transition: opacity 0.4s ease;
-      z-index: 10;
+      z-index: 20;
     }
 
     #letter-modal.active {
@@ -143,7 +190,7 @@
       transform: translateY(3px);
     }
 
-    /* Controles Pantalla Táctil */
+    /* Controles Celular */
     #mobile-controls {
       display: flex;
       gap: 24px;
@@ -180,13 +227,14 @@
 </head>
 <body>
 
-  <!-- Audio con ruta relativa explícita -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="./musica1.mp3" type="audio/mpeg">
-  </audio>
-
   <div id="game-container">
-    <button id="music-toggle" title="Música">🔈</button>
+    <!-- Pantalla de inicio para garantizar reproducción en móviles y navegadores -->
+    <div id="start-screen">
+      <h1 class="start-title">🌸 UN PEQUEÑO DETALLE 🌸</h1>
+      <button class="start-btn" id="startBtn">TOCAR PARA INICIAR ✨</button>
+    </div>
+
+    <button id="music-toggle" title="Música">🎵</button>
     <canvas id="gameCanvas" width="800" height="450"></canvas>
     
     <!-- Modal Carta -->
@@ -216,29 +264,47 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const letterModal = document.getElementById('letter-modal');
-    const bgMusic = document.getElementById('bgMusic');
+    const startScreen = document.getElementById('start-screen');
+    const startBtn = document.getElementById('startBtn');
     const musicToggle = document.getElementById('music-toggle');
 
+    // Reproductor de Audio Robusto
+    const bgAudio = new Audio('./musica1.mp3');
+    bgAudio.loop = true;
+    bgAudio.preload = 'auto';
+
+    let gameStarted = false;
     let musicPlaying = false;
 
-    function playAudio() {
-      if (musicPlaying) return;
-      bgMusic.play().then(() => {
+    function startMusic() {
+      bgAudio.play().then(() => {
         musicPlaying = true;
         musicToggle.textContent = '🎵';
       }).catch(err => {
-        console.warn('Audio play wait:', err);
+        console.warn('Audio play issue:', err);
       });
     }
 
+    function initGame() {
+      if (gameStarted) return;
+      gameStarted = true;
+      startScreen.classList.add('hidden');
+      startMusic();
+    }
+
+    startScreen.addEventListener('click', initGame);
+    startBtn.addEventListener('click', initGame);
+
     function toggleMusic(e) {
       if (e) e.stopPropagation();
+      if (!gameStarted) initGame();
+
       if (musicPlaying) {
-        bgMusic.pause();
+        bgAudio.pause();
         musicToggle.textContent = '🔇';
         musicPlaying = false;
       } else {
-        bgMusic.play().then(() => {
+        bgAudio.play().then(() => {
           musicToggle.textContent = '🎵';
           musicPlaying = true;
         }).catch(err => console.error(err));
@@ -246,13 +312,6 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
     }
 
     musicToggle.addEventListener('click', toggleMusic);
-
-    // Desbloquear audio con el primer toque/tecla en cualquier parte de la pantalla
-    ['click', 'touchstart', 'keydown'].forEach(evt => {
-      window.addEventListener(evt, () => {
-        playAudio();
-      }, { once: true });
-    });
 
     const keys = { left: false, right: false };
     let chestOpened = false;
@@ -317,6 +376,7 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
 
     // Controles
     window.addEventListener('keydown', (e) => {
+      if (!gameStarted) initGame();
       if (['ArrowLeft', 'KeyA'].includes(e.code)) keys.left = true;
       if (['ArrowRight', 'KeyD'].includes(e.code)) keys.right = true;
     });
@@ -327,9 +387,9 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
     });
 
     const bindTouch = (btn, dir) => {
-      btn.addEventListener('touchstart', (e) => { e.preventDefault(); playAudio(); keys[dir] = true; });
+      btn.addEventListener('touchstart', (e) => { e.preventDefault(); if (!gameStarted) initGame(); keys[dir] = true; });
       btn.addEventListener('touchend', (e) => { e.preventDefault(); keys[dir] = false; });
-      btn.addEventListener('mousedown', () => { playAudio(); keys[dir] = true; });
+      btn.addEventListener('mousedown', () => { if (!gameStarted) initGame(); keys[dir] = true; });
       btn.addEventListener('mouseup', () => keys[dir] = false);
     };
     bindTouch(document.getElementById('leftBtn'), 'left');
@@ -346,7 +406,7 @@ No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favor
 
     function update() {
       globalTicks++;
-      if (!chestOpened) {
+      if (gameStarted && !chestOpened) {
         if (keys.left && player.x > 30) {
           player.x -= player.speed;
           player.facing = 'left';
