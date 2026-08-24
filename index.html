@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Para ti ✨ | Chobits Special</title>
+  <title>Para mi persona especial 🌸</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
@@ -16,7 +16,7 @@
     }
 
     body {
-      background: #2b1e2c;
+      background: #1f1524;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -32,11 +32,11 @@
       width: 100%;
       max-width: 800px;
       aspect-ratio: 16 / 9;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border-radius: 16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+      border-radius: 18px;
       overflow: hidden;
-      border: 4px solid #f3c4db;
-      background: #ffd6e8;
+      border: 4px solid #f8bbd0;
+      background: #ffd3e2;
     }
 
     canvas {
@@ -50,8 +50,8 @@
     #letter-modal {
       position: absolute;
       inset: 0;
-      background: rgba(43, 30, 44, 0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(28, 16, 32, 0.78);
+      backdrop-filter: blur(6px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -67,17 +67,17 @@
     }
 
     .letter-box {
-      background: #fffafa;
-      border: 4px solid #f4a6cd;
-      border-radius: 18px;
-      padding: 26px;
-      max-width: 520px;
+      background: #fffcfd;
+      border: 4px solid #f48fb1;
+      border-radius: 20px;
+      padding: 28px;
+      max-width: 540px;
       width: 100%;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
       text-align: center;
-      color: #5d4037;
+      color: #4a2d3c;
       transform: translateY(20px);
-      transition: transform 0.4s ease;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     #letter-modal.active .letter-box {
@@ -86,63 +86,65 @@
 
     .letter-title {
       font-size: 13px;
-      color: #d85a8a;
-      margin-bottom: 16px;
-      line-height: 1.4;
+      color: #d81b60;
+      margin-bottom: 18px;
+      line-height: 1.5;
     }
 
     .letter-body {
       font-family: 'Quicksand', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      color: #6d4c5d;
+      font-size: 15.5px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+      color: #593549;
       white-space: pre-line;
+      text-align: left;
     }
 
     .btn-close {
-      background: #f28482;
+      background: #ec407a;
       color: white;
       border: none;
       font-family: 'Press Start 2P', monospace;
       font-size: 10px;
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 12px 24px;
+      border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 4px #c96866;
+      box-shadow: 0 4px #ad1457;
+      transition: 0.1s transform;
     }
 
     .btn-close:active {
-      box-shadow: 0 1px #c96866;
+      box-shadow: 0 1px #ad1457;
       transform: translateY(3px);
     }
 
-    /* Controles Celular */
+    /* Controles Pantalla Táctil */
     #mobile-controls {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       margin-top: 15px;
     }
 
     .touch-btn {
-      width: 60px;
-      height: 60px;
-      background: #4a3348;
-      border: 3px solid #d4a5b8;
+      width: 64px;
+      height: 64px;
+      background: #3e273f;
+      border: 3px solid #f48fb1;
       border-radius: 50%;
-      color: #ffd6e8;
-      font-size: 20px;
+      color: #fce4ec;
+      font-size: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px #261925;
+      box-shadow: 0 4px #201121;
     }
 
     .touch-btn:active {
       transform: translateY(3px);
-      box-shadow: 0 1px #261925;
-      background: #61435e;
+      box-shadow: 0 1px #201121;
+      background: #5d345f;
     }
 
     @media (min-width: 800px) {
@@ -157,20 +159,20 @@
   <div id="game-container">
     <canvas id="gameCanvas" width="800" height="450"></canvas>
     
-    <!-- Modal Carta -->
+    <!-- Modal Carta Chobits -->
     <div id="letter-modal">
       <div class="letter-box">
-        <h2 class="letter-title">🌸 «Solo una persona para mí» 🌸</h2>
+        <h2 class="letter-title">🌸 «La persona sólo para mí» 🌸</h2>
         <div class="letter-body" id="letterText">
-Hola bonita,
+Desde el día en que te vi no he dejado de pensar en ti.
 
-Así como en Chobits existe esa búsqueda por encontrar a esa única persona especial en el mundo... para mí es claro que esa persona eres tú.
+Así como en la historia de <i>Chobits</i> existe ese libro que habla de una ciudad vacía donde uno busca a esa persona irreemplazable... desde que entraste a mi vida entendí que tú eres esa única persona especial para mí.
 
-Gracias por cada sonrisa, por cada momento y por iluminar mis días. Quería dejarte este pequeño detalle programado con todo mi cariño.
+No importa lo grande que sea el mundo o lo rápido que vaya todo, mi lugar favorito siempre es contigo. Quería prepararte este pequeño detalle hecho con mis propias manos y mi código para recordarte lo mucho que te amo.
 
-¡Te quiero muchísimo! 💕
+¡Eres mi mayor tesoro! 💕
         </div>
-        <button class="btn-close" onclick="closeLetter()">Cerrar</button>
+        <button class="btn-close" onclick="closeLetter()">Guardar en el corazón ❤️</button>
       </div>
     </div>
   </div>
@@ -190,45 +192,46 @@ Gracias por cada sonrisa, por cada momento y por iluminar mis días. Quería dej
 
     // Chi Jugadora
     const player = {
-      x: 70,
-      y: 310,
-      width: 24,
-      height: 48,
-      speed: 3.8,
+      x: 80,
+      y: 300,
+      width: 26,
+      height: 55,
+      speed: 3.6,
       facing: 'right',
       walkTimer: 0
     };
 
-    // Cofre decorado estilo Chobits
+    // Cofre detallado
     const chest = {
-      x: 700,
-      y: 326,
-      width: 40,
-      height: 32,
-      sparkles: []
+      x: 690,
+      y: 318,
+      width: 46,
+      height: 38,
+      sparkles: [],
+      pulse: 0
     };
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 22; i++) {
       chest.sparkles.push({
-        x: chest.x + Math.random() * 44 - 2,
-        y: chest.y + Math.random() * 30 - 10,
-        size: Math.random() * 3 + 1.5,
-        speed: Math.random() * 0.4 + 0.2,
+        x: chest.x + Math.random() * 50 - 4,
+        y: chest.y + Math.random() * 35 - 12,
+        size: Math.random() * 3.5 + 1.5,
+        speedY: Math.random() * 0.6 + 0.3,
         alpha: Math.random()
       });
     }
 
-    // Pétalos de Cerezo (Sakura)
+    // Pétalos de Sakura
     const petals = [];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 45; i++) {
       petals.push({
         x: Math.random() * 800,
         y: Math.random() * 450,
-        size: Math.random() * 4 + 3,
-        speedX: Math.random() * 1.5 + 0.8,
-        speedY: Math.random() * 1.2 + 0.6,
+        size: Math.random() * 4.5 + 3.5,
+        speedX: Math.random() * 1.6 + 0.9,
+        speedY: Math.random() * 1.1 + 0.6,
         angle: Math.random() * Math.PI * 2,
-        angleSpeed: (Math.random() - 0.5) * 0.05
+        angleSpeed: (Math.random() - 0.5) * 0.06
       });
     }
 
@@ -263,7 +266,7 @@ Gracias por cada sonrisa, por cada momento y por iluminar mis días. Quería dej
 
     function update() {
       if (!chestOpened) {
-        if (keys.left && player.x > 20) {
+        if (keys.left && player.x > 30) {
           player.x -= player.speed;
           player.facing = 'left';
           player.walkTimer++;
@@ -275,17 +278,17 @@ Gracias por cada sonrisa, por cada momento y por iluminar mis días. Quería dej
           player.walkTimer = 0;
         }
 
-        if (player.x + player.width >= chest.x - 12) {
+        if (player.x + player.width >= chest.x - 8) {
           openLetter();
         }
       }
 
-      // Animación de pétalos
+      chest.pulse += 0.05;
+
       petals.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
         p.angle += p.angleSpeed;
-
         if (p.x > 820) p.x = -20;
         if (p.y > 460) {
           p.y = -10;
@@ -293,189 +296,266 @@ Gracias por cada sonrisa, por cada momento y por iluminar mis días. Quería dej
         }
       });
 
-      // Partículas cofre
       chest.sparkles.forEach(s => {
-        s.y -= s.speed;
-        s.alpha -= 0.012;
+        s.y -= s.speedY;
+        s.alpha -= 0.014;
         if (s.alpha <= 0) {
-          s.y = chest.y + 15;
-          s.x = chest.x + Math.random() * 44 - 2;
+          s.y = chest.y + 20;
+          s.x = chest.x + Math.random() * 50 - 4;
           s.alpha = 1;
         }
       });
     }
 
     function drawBackground() {
-      // Cielo atardecer pastel
+      // Degradado crepuscular pastel
       let sky = ctx.createLinearGradient(0, 0, 0, 360);
-      sky.addColorStop(0, '#f9c5d1');
-      sky.addColorStop(0.5, '#fde2e4');
-      sky.addColorStop(1, '#e2ece9');
+      sky.addColorStop(0, '#f8bbd0');
+      sky.addColorStop(0.45, '#ffd1dc');
+      sky.addColorStop(0.85, '#e1bee7');
+      sky.addColorStop(1, '#d1c4e9');
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, 800, 450);
 
-      // Sol suave
-      ctx.fillStyle = '#fff6cc';
+      // Sol / Luna suave
+      ctx.fillStyle = '#fff9db';
       ctx.beginPath();
-      ctx.arc(480, 110, 38, 0, Math.PI * 2);
+      ctx.arc(490, 110, 42, 0, Math.PI * 2);
       ctx.fill();
 
-      // Colinas suaves pastel
-      ctx.fillStyle = '#d8bbd4';
+      // Siluetas de fondo tipo colinas y lejana ciudad
+      ctx.fillStyle = '#c5a3c9';
       ctx.beginPath();
-      ctx.arc(260, 420, 260, 0, Math.PI, true);
+      ctx.arc(220, 420, 280, 0, Math.PI, true);
       ctx.fill();
 
-      ctx.fillStyle = '#c7a9c3';
+      ctx.fillStyle = '#b388b8';
       ctx.beginPath();
-      ctx.arc(620, 430, 240, 0, Math.PI, true);
+      ctx.arc(610, 430, 260, 0, Math.PI, true);
       ctx.fill();
 
-      // Árbol de Cerezo (Sakura)
-      drawSakuraTree(140, 360);
+      // Árbol Sakura exuberante
+      drawSakuraTree(150, 360);
 
-      // Suelo pasto pastel
-      ctx.fillStyle = '#9fc490';
-      ctx.fillRect(0, 360, 800, 18);
+      // Farola estilo anime retro
+      drawStreetLamp(360, 360);
 
-      // Suelo tierra suave
-      ctx.fillStyle = '#7a5243';
-      ctx.fillRect(0, 378, 800, 72);
+      // Suelo de adoquines / pasto suave
+      ctx.fillStyle = '#81c784';
+      ctx.fillRect(0, 355, 800, 16);
 
-      // Detalles florecitas en el piso
-      ctx.fillStyle = '#fff0f5';
-      for (let i = 20; i < 800; i += 60) {
-        ctx.fillRect(i, 364, 4, 4);
-        ctx.fillRect(i + 4, 366, 4, 4);
+      // Acera / Camino de adoquines
+      ctx.fillStyle = '#5d4037';
+      ctx.fillRect(0, 371, 800, 79);
+
+      // Líneas de adoquín decorativas
+      ctx.fillStyle = '#4e342e';
+      for (let i = 0; i < 800; i += 40) {
+        ctx.fillRect(i, 385, 36, 12);
+        ctx.fillRect(i + 20, 405, 36, 12);
+        ctx.fillRect(i, 425, 36, 12);
+      }
+
+      // Florecitas en el pasto
+      ctx.fillStyle = '#ffffff';
+      for (let i = 30; i < 800; i += 70) {
+        ctx.fillRect(i, 358, 4, 4);
+        ctx.fillRect(i + 4, 361, 3, 3);
       }
     }
 
-    function drawSakuraTree(x, y) {
-      // Tronco
-      ctx.fillStyle = '#5a3d31';
-      ctx.fillRect(x - 10, y - 90, 20, 90);
+    function drawStreetLamp(x, y) {
+      // Poste
+      ctx.fillStyle = '#37474f';
+      ctx.fillRect(x - 3, y - 110, 6, 110);
+      ctx.fillRect(x - 8, y - 6, 16, 6);
       
-      // Copa rosa sakura
-      ctx.fillStyle = '#f8a5c2';
+      // Farol
+      ctx.fillStyle = '#263238';
+      ctx.fillRect(x - 9, y - 120, 18, 10);
+      
+      // Foco / Brillo
+      ctx.fillStyle = 'rgba(255, 249, 196, 0.85)';
+      ctx.fillRect(x - 7, y - 112, 14, 14);
+      
+      // Halo de luz
+      ctx.fillStyle = 'rgba(255, 245, 157, 0.12)';
       ctx.beginPath();
-      ctx.arc(x, y - 110, 45, 0, Math.PI * 2);
-      ctx.arc(x - 30, y - 95, 35, 0, Math.PI * 2);
-      ctx.arc(x + 30, y - 95, 35, 0, Math.PI * 2);
+      ctx.arc(x, y - 105, 35, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawSakuraTree(x, y) {
+      // Tronco con textura
+      ctx.fillStyle = '#4e342e';
+      ctx.fillRect(x - 12, y - 105, 24, 105);
+      ctx.fillRect(x - 22, y - 60, 12, 10);
+
+      // Copa Sakura con capas de rosa
+      ctx.fillStyle = '#f48fb1';
+      ctx.beginPath();
+      ctx.arc(x, y - 130, 55, 0, Math.PI * 2);
+      ctx.arc(x - 40, y - 110, 42, 0, Math.PI * 2);
+      ctx.arc(x + 40, y - 110, 42, 0, Math.PI * 2);
       ctx.fill();
 
-      // Luces en las flores
-      ctx.fillStyle = '#fce4ec';
+      // Detalles claros
+      ctx.fillStyle = '#f8bbd0';
       ctx.beginPath();
-      ctx.arc(x - 10, y - 120, 22, 0, Math.PI * 2);
-      ctx.arc(x + 18, y - 105, 20, 0, Math.PI * 2);
+      ctx.arc(x - 15, y - 145, 30, 0, Math.PI * 2);
+      ctx.arc(x + 25, y - 125, 28, 0, Math.PI * 2);
       ctx.fill();
     }
 
     function drawPetals() {
-      ctx.fillStyle = '#f48fb1';
+      ctx.fillStyle = '#f06292';
       petals.forEach(p => {
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.angle);
         ctx.beginPath();
-        ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 0, p.size, p.size / 2.2, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       });
     }
 
     function drawChest() {
-      // Destellos
+      // Destellos mágicos dorados y rosas
       chest.sparkles.forEach(s => {
-        ctx.fillStyle = `rgba(255, 182, 193, ${s.alpha})`;
+        ctx.fillStyle = `rgba(255, 235, 59, ${s.alpha})`;
         ctx.fillRect(s.x, s.y, s.size, s.size);
       });
 
-      // Caja rosa/oro
-      ctx.fillStyle = '#e88ca8';
-      ctx.fillRect(chest.x, chest.y + 10, chest.width, chest.height - 10);
+      // Halo pulsante
+      let glow = Math.sin(chest.pulse) * 4;
+      ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
+      ctx.beginPath();
+      ctx.arc(chest.x + chest.width / 2, chest.y + chest.height / 2, 32 + glow, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Base del cofre (Madera noble con bordes dorados)
+      ctx.fillStyle = '#8d6e63';
+      ctx.fillRect(chest.x, chest.y + 12, chest.width, chest.height - 12);
+
+      // Bordes dorados exteriores
+      ctx.fillStyle = '#ffd54f';
+      ctx.fillRect(chest.x, chest.y + 12, 5, chest.height - 12);
+      ctx.fillRect(chest.x + chest.width - 5, chest.y + 12, 5, chest.height - 12);
+      ctx.fillRect(chest.x, chest.y + chest.height - 4, chest.width, 4);
 
       if (chestOpened) {
-        ctx.fillStyle = '#b85d7b';
-        ctx.fillRect(chest.x - 2, chest.y - 6, chest.width + 4, 12);
-        ctx.fillStyle = '#fff9c4';
-        ctx.fillRect(chest.x + 4, chest.y + 8, chest.width - 8, 8);
+        // Tapa abierta inclinada
+        ctx.fillStyle = '#5d4037';
+        ctx.fillRect(chest.x - 3, chest.y - 8, chest.width + 6, 14);
+        
+        // Brillo interior deslumbrante
+        ctx.fillStyle = '#fffde7';
+        ctx.fillRect(chest.x + 5, chest.y + 8, chest.width - 10, 10);
+        ctx.fillStyle = '#ffe082';
+        ctx.fillRect(chest.x + 8, chest.y + 12, chest.width - 16, 6);
       } else {
-        ctx.fillStyle = '#f0a3bb';
-        ctx.fillRect(chest.x, chest.y, chest.width, 12);
-        // Corazón cerradura
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(chest.x + chest.width / 2 - 4, chest.y + 8, 8, 8);
-      }
+        // Tapa cerrada redondeada
+        ctx.fillStyle = '#a1887f';
+        ctx.fillRect(chest.x - 1, chest.y, chest.width + 2, 14);
+        
+        ctx.fillStyle = '#ffd54f';
+        ctx.fillRect(chest.x - 1, chest.y + 4, chest.width + 2, 3);
 
-      // Adornos blancos
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(chest.x, chest.y + 10, 4, chest.height - 10);
-      ctx.fillRect(chest.x + chest.width - 4, chest.y + 10, 4, chest.height - 10);
+        // Placa y Cerradura de Corazón dorado
+        ctx.fillStyle = '#ffd54f';
+        ctx.fillRect(chest.x + chest.width / 2 - 6, chest.y + 9, 12, 10);
+        ctx.fillStyle = '#e91e63'; // Corazón central
+        ctx.fillRect(chest.x + chest.width / 2 - 3, chest.y + 11, 6, 6);
+      }
     }
 
     function drawPlayer() {
       const p = player;
-      const walkOffset = Math.sin(p.walkTimer * 0.35) * 2.5;
+      const walkOffset = Math.sin(p.walkTimer * 0.35) * 2.8;
 
       ctx.save();
       ctx.translate(p.x + p.width / 2, p.y + p.height);
       if (p.facing === 'left') ctx.scale(-1, 1);
 
       // Sombra
-      ctx.fillStyle = 'rgba(0,0,0,0.18)';
+      ctx.fillStyle = 'rgba(0,0,0,0.2)';
       ctx.beginPath();
-      ctx.ellipse(0, -1, 14, 4, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, -1, 16, 5, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Cabello largo de Chi (Espalda)
-      ctx.fillStyle = '#fae19c';
-      ctx.fillRect(-12, -45, 14, 38);
+      // === CABELLO LARGO TRASERO DE CHI (Hasta casi los pies) ===
+      ctx.fillStyle = '#fce295';
+      ctx.fillRect(-14, -50, 18, 44);
+      ctx.fillStyle = '#eed07e'; // Sombra mechones
+      ctx.fillRect(-15, -45, 4, 38);
 
-      // Piernitas
+      // === PIERNAS Y ZAPATITOS ===
       ctx.fillStyle = '#ffe0bd';
-      ctx.fillRect(-6, -12 + walkOffset, 4, 12);
-      ctx.fillRect(2, -12 - walkOffset, 4, 12);
+      ctx.fillRect(-6, -14 + walkOffset, 4, 12);
+      ctx.fillRect(2, -14 - walkOffset, 4, 12);
 
-      // Zapatitos rosas
-      ctx.fillStyle = '#e88ca8';
-      ctx.fillRect(-7, -2 + walkOffset, 5, 4);
-      ctx.fillRect(1, -2 - walkOffset, 5, 4);
+      // Zapatitos rosas con calcetas blancas
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(-7, -7 + walkOffset, 5, 4);
+      ctx.fillRect(1, -7 - walkOffset, 5, 4);
+      ctx.fillStyle = '#f48fb1';
+      ctx.fillRect(-7, -3 + walkOffset, 6, 3);
+      ctx.fillRect(1, -3 - walkOffset, 6, 3);
 
-      // Vestido blanco con volantes de Chi
+      // === VESTIDO ICÓNICO DE CHI (Blanco y Rosa con vuelo) ===
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
-      ctx.moveTo(-10, -14);
-      ctx.lineTo(10, -14);
-      ctx.lineTo(5, -34);
-      ctx.lineTo(-5, -34);
+      ctx.moveTo(-13, -15);
+      ctx.lineTo(13, -15);
+      ctx.lineTo(6, -38);
+      ctx.lineTo(-6, -38);
       ctx.closePath();
       ctx.fill();
 
-      // Detalles cinta rosa vestido
+      // Vuelo inferior con ribete rosa
       ctx.fillStyle = '#f48fb1';
-      ctx.fillRect(-6, -26, 12, 3);
+      ctx.fillRect(-13, -17, 26, 3);
 
-      // Cabeza
-      ctx.fillStyle = '#ffe0bd';
-      ctx.fillRect(-7, -46, 14, 14);
-
-      // Cabello frontal / flequillo
-      ctx.fillStyle = '#fae19c';
-      ctx.fillRect(-8, -48, 16, 6);
-      ctx.fillRect(-8, -44, 4, 14);
-
-      // Ojo anime grande y sonrojo
-      ctx.fillStyle = '#4a2835';
-      ctx.fillRect(2, -41, 3, 4);
-      ctx.fillStyle = '#ff8fa3';
-      ctx.fillRect(1, -36, 4, 2);
-
-      // Oreja Persocom icónica de Chobits (Blanca y rosa)
+      // Mangas abullonadas blancas
       ctx.fillStyle = '#ffffff';
-      ctx.fillRect(-4, -46, 6, 8);
-      ctx.fillStyle = '#f48fb1';
-      ctx.fillRect(-2, -44, 3, 4);
+      ctx.fillRect(-10, -38, 5, 8);
+      ctx.fillRect(5, -38, 5, 8);
+
+      // Listón/Lazo frontal rosa en el pecho
+      ctx.fillStyle = '#f06292';
+      ctx.fillRect(-4, -32, 8, 4);
+
+      // Manitas
+      ctx.fillStyle = '#ffe0bd';
+      ctx.fillRect(-10, -30, 4, 4);
+      ctx.fillRect(6, -30, 4, 4);
+
+      // === CABEZA Y CARITA ===
+      ctx.fillStyle = '#ffe0bd';
+      ctx.fillRect(-8, -52, 16, 15);
+
+      // Cabello frontal / Flequillo suave
+      ctx.fillStyle = '#fce295';
+      ctx.fillRect(-9, -54, 18, 7);
+      ctx.fillRect(-9, -49, 4, 16); // Mechón largo delantero izquierdo
+      ctx.fillRect(5, -49, 4, 12);  // Mechón largo delantero derecho
+
+      // Ojito anime y rubor
+      ctx.fillStyle = '#4a1525';
+      ctx.fillRect(3, -46, 3, 5);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(3, -46, 1, 2); // Brillo del ojo
+      ctx.fillStyle = '#ff80ab';
+      ctx.fillRect(1, -40, 5, 2); // Mejilla sonrojada
+
+      // === OREJITAS MECÁNICAS PERSOCOM DE CHI ===
+      // Base blanca cónica
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(-4, -52, 6, 9);
+      // Detalle interior rosa icónico
+      ctx.fillStyle = '#f06292';
+      ctx.fillRect(-2, -50, 3, 5);
 
       ctx.restore();
     }
