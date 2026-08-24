@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Una pequeña sorpresa ✨</title>
+  <title>Para ti ✨ | Chobits Special</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
@@ -16,7 +16,7 @@
     }
 
     body {
-      background: #1a1a24;
+      background: #2b1e2c;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -33,10 +33,10 @@
       max-width: 800px;
       aspect-ratio: 16 / 9;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 4px solid #4a3b32;
-      background: #87ceeb;
+      border: 4px solid #f3c4db;
+      background: #ffd6e8;
     }
 
     canvas {
@@ -46,11 +46,11 @@
       image-rendering: pixelated;
     }
 
-    /* Modal de la Carta */
+    /* Modal Carta */
     #letter-modal {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(43, 30, 44, 0.7);
       backdrop-filter: blur(4px);
       display: none;
       align-items: center;
@@ -67,15 +67,15 @@
     }
 
     .letter-box {
-      background: #fff8eb;
-      border: 5px solid #d4a373;
-      border-radius: 16px;
-      padding: 24px;
+      background: #fffafa;
+      border: 4px solid #f4a6cd;
+      border-radius: 18px;
+      padding: 26px;
       max-width: 520px;
       width: 100%;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
       text-align: center;
-      color: #4a3b32;
+      color: #5d4037;
       transform: translateY(20px);
       transition: transform 0.4s ease;
     }
@@ -86,7 +86,7 @@
 
     .letter-title {
       font-size: 13px;
-      color: #c94a53;
+      color: #d85a8a;
       margin-bottom: 16px;
       line-height: 1.4;
     }
@@ -96,28 +96,28 @@
       font-size: 16px;
       line-height: 1.6;
       margin-bottom: 20px;
-      color: #5c4d43;
+      color: #6d4c5d;
       white-space: pre-line;
     }
 
     .btn-close {
-      background: #e76f51;
+      background: #f28482;
       color: white;
       border: none;
       font-family: 'Press Start 2P', monospace;
       font-size: 10px;
-      padding: 10px 18px;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px #b8533c;
+      box-shadow: 0 4px #c96866;
     }
 
     .btn-close:active {
-      box-shadow: 0 1px #b8533c;
+      box-shadow: 0 1px #c96866;
       transform: translateY(3px);
     }
 
-    /* Controles en Pantalla para Celular */
+    /* Controles Celular */
     #mobile-controls {
       display: flex;
       gap: 20px;
@@ -127,22 +127,22 @@
     .touch-btn {
       width: 60px;
       height: 60px;
-      background: #3e322a;
-      border: 3px solid #8d6e63;
+      background: #4a3348;
+      border: 3px solid #d4a5b8;
       border-radius: 50%;
-      color: white;
+      color: #ffd6e8;
       font-size: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px #231b17;
+      box-shadow: 0 4px #261925;
     }
 
     .touch-btn:active {
       transform: translateY(3px);
-      box-shadow: 0 1px #231b17;
-      background: #5d4037;
+      box-shadow: 0 1px #261925;
+      background: #61435e;
     }
 
     @media (min-width: 800px) {
@@ -160,20 +160,21 @@
     <!-- Modal Carta -->
     <div id="letter-modal">
       <div class="letter-box">
-        <h2 class="letter-title">💌 ¡LLEGASTE AL TESORO! 💌</h2>
+        <h2 class="letter-title">🌸 «Solo una persona para mí» 🌸</h2>
         <div class="letter-body" id="letterText">
 Hola bonita,
 
-Si estás leyendo esto es porque llegaste al final del camino. Quería hacerte un detalle diferente programado por mí para recordarte lo increíble que eres y lo mucho que me alegra compartir cada momento contigo.
+Así como en Chobits existe esa búsqueda por encontrar a esa única persona especial en el mundo... para mí es claro que esa persona eres tú.
 
-¡Eres mi mayor tesoro! ❤️
+Gracias por cada sonrisa, por cada momento y por iluminar mis días. Quería dejarte este pequeño detalle programado con todo mi cariño.
+
+¡Te quiero muchísimo! 💕
         </div>
         <button class="btn-close" onclick="closeLetter()">Cerrar</button>
       </div>
     </div>
   </div>
 
-  <!-- Controles táctiles -->
   <div id="mobile-controls">
     <button class="touch-btn" id="leftBtn">◀</button>
     <button class="touch-btn" id="rightBtn">▶</button>
@@ -184,50 +185,54 @@ Si estás leyendo esto es porque llegaste al final del camino. Quería hacerte u
     const ctx = canvas.getContext('2d');
     const letterModal = document.getElementById('letter-modal');
 
-    // Estado del juego
     const keys = { left: false, right: false };
     let chestOpened = false;
 
-    // Jugador
+    // Chi Jugadora
     const player = {
-      x: 60,
-      y: 320,
+      x: 70,
+      y: 310,
       width: 24,
-      height: 40,
-      speed: 4,
+      height: 48,
+      speed: 3.8,
       facing: 'right',
-      frame: 0,
       walkTimer: 0
     };
 
-    // Cofre
+    // Cofre decorado estilo Chobits
     const chest = {
       x: 700,
-      y: 330,
-      width: 36,
-      height: 30,
+      y: 326,
+      width: 40,
+      height: 32,
       sparkles: []
     };
 
-    // Partículas de brillitos
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 18; i++) {
       chest.sparkles.push({
-        x: chest.x + Math.random() * 40 - 2,
+        x: chest.x + Math.random() * 44 - 2,
         y: chest.y + Math.random() * 30 - 10,
-        size: Math.random() * 3 + 1,
-        speed: Math.random() * 0.5 + 0.2,
+        size: Math.random() * 3 + 1.5,
+        speed: Math.random() * 0.4 + 0.2,
         alpha: Math.random()
       });
     }
 
-    // Nubes de fondo
-    const clouds = [
-      { x: 50, y: 50, s: 0.8 },
-      { x: 300, y: 80, s: 1.2 },
-      { x: 600, y: 40, s: 1.0 }
-    ];
+    // Pétalos de Cerezo (Sakura)
+    const petals = [];
+    for (let i = 0; i < 40; i++) {
+      petals.push({
+        x: Math.random() * 800,
+        y: Math.random() * 450,
+        size: Math.random() * 4 + 3,
+        speedX: Math.random() * 1.5 + 0.8,
+        speedY: Math.random() * 1.2 + 0.6,
+        angle: Math.random() * Math.PI * 2,
+        angleSpeed: (Math.random() - 0.5) * 0.05
+      });
+    }
 
-    // Eventos Teclado
+    // Controles
     window.addEventListener('keydown', (e) => {
       if (['ArrowLeft', 'KeyA'].includes(e.code)) keys.left = true;
       if (['ArrowRight', 'KeyD'].includes(e.code)) keys.right = true;
@@ -238,7 +243,6 @@ Si estás leyendo esto es porque llegaste al final del camino. Quería hacerte u
       if (['ArrowRight', 'KeyD'].includes(e.code)) keys.right = false;
     });
 
-    // Eventos Táctiles
     const bindTouch = (btn, dir) => {
       btn.addEventListener('touchstart', (e) => { e.preventDefault(); keys[dir] = true; });
       btn.addEventListener('touchend', (e) => { e.preventDefault(); keys[dir] = false; });
@@ -271,177 +275,207 @@ Si estás leyendo esto es porque llegaste al final del camino. Quería hacerte u
           player.walkTimer = 0;
         }
 
-        // Colisión con cofre
-        if (player.x + player.width >= chest.x - 10) {
+        if (player.x + player.width >= chest.x - 12) {
           openLetter();
         }
       }
 
-      // Animación de partículas del cofre
+      // Animación de pétalos
+      petals.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.angle += p.angleSpeed;
+
+        if (p.x > 820) p.x = -20;
+        if (p.y > 460) {
+          p.y = -10;
+          p.x = Math.random() * 800;
+        }
+      });
+
+      // Partículas cofre
       chest.sparkles.forEach(s => {
         s.y -= s.speed;
-        s.alpha -= 0.01;
+        s.alpha -= 0.012;
         if (s.alpha <= 0) {
           s.y = chest.y + 15;
-          s.x = chest.x + Math.random() * 40 - 2;
+          s.x = chest.x + Math.random() * 44 - 2;
           s.alpha = 1;
         }
       });
     }
 
-    // Dibuja el escenario Pixel Art
     function drawBackground() {
-      // Cielo degradado
-      let skyGrad = ctx.createLinearGradient(0, 0, 0, 360);
-      skyGrad.addColorStop(0, '#74c0e3');
-      skyGrad.addColorStop(1, '#c5e8f7');
-      ctx.fillStyle = skyGrad;
+      // Cielo atardecer pastel
+      let sky = ctx.createLinearGradient(0, 0, 0, 360);
+      sky.addColorStop(0, '#f9c5d1');
+      sky.addColorStop(0.5, '#fde2e4');
+      sky.addColorStop(1, '#e2ece9');
+      ctx.fillStyle = sky;
       ctx.fillRect(0, 0, 800, 450);
 
-      // Sol
-      ctx.fillStyle = '#fff4bd';
+      // Sol suave
+      ctx.fillStyle = '#fff6cc';
       ctx.beginPath();
-      ctx.arc(460, 90, 42, 0, Math.PI * 2);
+      ctx.arc(480, 110, 38, 0, Math.PI * 2);
       ctx.fill();
 
-      // Montañas de fondo
-      ctx.fillStyle = '#9cb8c9';
+      // Colinas suaves pastel
+      ctx.fillStyle = '#d8bbd4';
       ctx.beginPath();
-      ctx.moveTo(350, 360);
-      ctx.lineTo(520, 110);
-      ctx.lineTo(690, 360);
+      ctx.arc(260, 420, 260, 0, Math.PI, true);
       ctx.fill();
 
-      // Pico nevado
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = '#c7a9c3';
       ctx.beginPath();
-      ctx.moveTo(520, 110);
-      ctx.lineTo(490, 155);
-      ctx.lineTo(550, 155);
+      ctx.arc(620, 430, 240, 0, Math.PI, true);
       ctx.fill();
 
-      // Nubes
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-      clouds.forEach(c => {
-        ctx.beginPath();
-        ctx.arc(c.x, c.y, 25 * c.s, 0, Math.PI * 2);
-        ctx.arc(c.x + 20 * c.s, c.y - 10 * c.s, 30 * c.s, 0, Math.PI * 2);
-        ctx.arc(c.x + 45 * c.s, c.y, 22 * c.s, 0, Math.PI * 2);
-        ctx.fill();
-      });
+      // Árbol de Cerezo (Sakura)
+      drawSakuraTree(140, 360);
 
-      // Suelo / Pasto
-      ctx.fillStyle = '#5b8c3d';
-      ctx.fillRect(0, 360, 800, 20);
+      // Suelo pasto pastel
+      ctx.fillStyle = '#9fc490';
+      ctx.fillRect(0, 360, 800, 18);
 
-      // Tierra
-      ctx.fillStyle = '#3a271d';
-      ctx.fillRect(0, 380, 800, 70);
+      // Suelo tierra suave
+      ctx.fillStyle = '#7a5243';
+      ctx.fillRect(0, 378, 800, 72);
 
-      // Bloques de detalle en tierra
-      ctx.fillStyle = '#2a1a12';
-      for (let i = 0; i < 800; i += 40) {
-        ctx.fillRect(i + 10, 400, 16, 12);
-        ctx.fillRect(i + 25, 420, 12, 10);
+      // Detalles florecitas en el piso
+      ctx.fillStyle = '#fff0f5';
+      for (let i = 20; i < 800; i += 60) {
+        ctx.fillRect(i, 364, 4, 4);
+        ctx.fillRect(i + 4, 366, 4, 4);
       }
-
-      // Árbol decorativo izquierdo
-      drawTree(90, 360);
-      drawTree(220, 360);
     }
 
-    function drawTree(x, y) {
+    function drawSakuraTree(x, y) {
       // Tronco
-      ctx.fillStyle = '#6b472e';
-      ctx.fillRect(x - 8, y - 60, 16, 60);
-      // Follaje
-      ctx.fillStyle = '#3c752c';
+      ctx.fillStyle = '#5a3d31';
+      ctx.fillRect(x - 10, y - 90, 20, 90);
+      
+      // Copa rosa sakura
+      ctx.fillStyle = '#f8a5c2';
       ctx.beginPath();
-      ctx.arc(x, y - 75, 35, 0, Math.PI * 2);
-      ctx.arc(x - 20, y - 65, 25, 0, Math.PI * 2);
-      ctx.arc(x + 20, y - 65, 25, 0, Math.PI * 2);
+      ctx.arc(x, y - 110, 45, 0, Math.PI * 2);
+      ctx.arc(x - 30, y - 95, 35, 0, Math.PI * 2);
+      ctx.arc(x + 30, y - 95, 35, 0, Math.PI * 2);
       ctx.fill();
+
+      // Luces en las flores
+      ctx.fillStyle = '#fce4ec';
+      ctx.beginPath();
+      ctx.arc(x - 10, y - 120, 22, 0, Math.PI * 2);
+      ctx.arc(x + 18, y - 105, 20, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawPetals() {
+      ctx.fillStyle = '#f48fb1';
+      petals.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
     }
 
     function drawChest() {
-      // Brillos dorados
+      // Destellos
       chest.sparkles.forEach(s => {
-        ctx.fillStyle = `rgba(255, 215, 0, ${s.alpha})`;
+        ctx.fillStyle = `rgba(255, 182, 193, ${s.alpha})`;
         ctx.fillRect(s.x, s.y, s.size, s.size);
       });
 
-      // Cuerpo cofre
-      ctx.fillStyle = '#8b5a2b';
+      // Caja rosa/oro
+      ctx.fillStyle = '#e88ca8';
       ctx.fillRect(chest.x, chest.y + 10, chest.width, chest.height - 10);
 
-      // Tapa cofre
       if (chestOpened) {
-        ctx.fillStyle = '#5c3818';
+        ctx.fillStyle = '#b85d7b';
         ctx.fillRect(chest.x - 2, chest.y - 6, chest.width + 4, 12);
-        // Interior con brillo
-        ctx.fillStyle = '#ffd700';
+        ctx.fillStyle = '#fff9c4';
         ctx.fillRect(chest.x + 4, chest.y + 8, chest.width - 8, 8);
       } else {
-        ctx.fillStyle = '#a06836';
+        ctx.fillStyle = '#f0a3bb';
         ctx.fillRect(chest.x, chest.y, chest.width, 12);
-        // Cerradura
-        ctx.fillStyle = '#ffd700';
-        ctx.fillRect(chest.x + chest.width / 2 - 3, chest.y + 9, 6, 7);
+        // Corazón cerradura
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(chest.x + chest.width / 2 - 4, chest.y + 8, 8, 8);
       }
 
-      // Bordes metálicos
-      ctx.fillStyle = '#d4af37';
+      // Adornos blancos
+      ctx.fillStyle = '#ffffff';
       ctx.fillRect(chest.x, chest.y + 10, 4, chest.height - 10);
       ctx.fillRect(chest.x + chest.width - 4, chest.y + 10, 4, chest.height - 10);
     }
 
     function drawPlayer() {
       const p = player;
-      const walkOffset = Math.sin(p.walkTimer * 0.3) * 2;
+      const walkOffset = Math.sin(p.walkTimer * 0.35) * 2.5;
 
       ctx.save();
       ctx.translate(p.x + p.width / 2, p.y + p.height);
-
       if (p.facing === 'left') ctx.scale(-1, 1);
 
       // Sombra
-      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.fillStyle = 'rgba(0,0,0,0.18)';
       ctx.beginPath();
-      ctx.ellipse(0, -2, 12, 4, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, -1, 14, 4, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Piernas / Pantalones
-      ctx.fillStyle = '#2b4162';
-      ctx.fillRect(-8, -14 + walkOffset, 6, 12);
-      ctx.fillRect(2, -14 - walkOffset, 6, 12);
+      // Cabello largo de Chi (Espalda)
+      ctx.fillStyle = '#fae19c';
+      ctx.fillRect(-12, -45, 14, 38);
 
-      // Zapatos
-      ctx.fillStyle = '#1e1e24';
-      ctx.fillRect(-9, -2 + walkOffset, 7, 4);
-      ctx.fillRect(1, -2 - walkOffset, 7, 4);
+      // Piernitas
+      ctx.fillStyle = '#ffe0bd';
+      ctx.fillRect(-6, -12 + walkOffset, 4, 12);
+      ctx.fillRect(2, -12 - walkOffset, 4, 12);
 
-      // Torso / Camisa
-      ctx.fillStyle = '#e76f51';
-      ctx.fillRect(-10, -32, 20, 18);
+      // Zapatitos rosas
+      ctx.fillStyle = '#e88ca8';
+      ctx.fillRect(-7, -2 + walkOffset, 5, 4);
+      ctx.fillRect(1, -2 - walkOffset, 5, 4);
 
-      // Mochila pequeña aventurera
-      ctx.fillStyle = '#7f5539';
-      ctx.fillRect(-14, -30, 5, 14);
+      // Vestido blanco con volantes de Chi
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.moveTo(-10, -14);
+      ctx.lineTo(10, -14);
+      ctx.lineTo(5, -34);
+      ctx.lineTo(-5, -34);
+      ctx.closePath();
+      ctx.fill();
 
-      // Cabeza / Piel
-      ctx.fillStyle = '#ffdbac';
-      ctx.fillRect(-8, -48, 16, 16);
+      // Detalles cinta rosa vestido
+      ctx.fillStyle = '#f48fb1';
+      ctx.fillRect(-6, -26, 12, 3);
 
-      // Ojo y mejilla sonrojada
-      ctx.fillStyle = '#1e1e24';
-      ctx.fillRect(3, -42, 3, 3);
-      ctx.fillStyle = 'rgba(255, 100, 100, 0.5)';
-      ctx.fillRect(2, -37, 4, 2);
+      // Cabeza
+      ctx.fillStyle = '#ffe0bd';
+      ctx.fillRect(-7, -46, 14, 14);
 
-      // Cabello
-      ctx.fillStyle = '#4a2810';
-      ctx.fillRect(-9, -51, 18, 6);
-      ctx.fillRect(-10, -48, 4, 8);
+      // Cabello frontal / flequillo
+      ctx.fillStyle = '#fae19c';
+      ctx.fillRect(-8, -48, 16, 6);
+      ctx.fillRect(-8, -44, 4, 14);
+
+      // Ojo anime grande y sonrojo
+      ctx.fillStyle = '#4a2835';
+      ctx.fillRect(2, -41, 3, 4);
+      ctx.fillStyle = '#ff8fa3';
+      ctx.fillRect(1, -36, 4, 2);
+
+      // Oreja Persocom icónica de Chobits (Blanca y rosa)
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(-4, -46, 6, 8);
+      ctx.fillStyle = '#f48fb1';
+      ctx.fillRect(-2, -44, 3, 4);
 
       ctx.restore();
     }
@@ -449,6 +483,7 @@ Si estás leyendo esto es porque llegaste al final del camino. Quería hacerte u
     function loop() {
       update();
       drawBackground();
+      drawPetals();
       drawChest();
       drawPlayer();
       requestAnimationFrame(loop);
